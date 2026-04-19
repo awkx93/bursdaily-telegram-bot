@@ -1,0 +1,11 @@
+app = "bursdaily-news-bot"
+primary_region = "sin"
+
+[build]
+
+[env]
+  TELEGRAM_CHAT_ID = "@bursdaily"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

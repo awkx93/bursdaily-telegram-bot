@@ -1,0 +1,37 @@
+name: News Bot
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # every 10 minutes
+  workflow_dispatch:           # allow manual trigger
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        run: python run_once.py
+
+      - name: Save seen articles DB
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "News Bot"
+          git add seen_articles.db
+          git diff --staged --quiet || git commit -m "chore: update seen articles"
+          git push
