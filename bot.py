@@ -7,12 +7,9 @@ API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
 def send_article(title: str, summary: str | None, url: str, source: str):
     text = (
-        f"📰 *{escape(title)}*
-
-"
-        f"[Read full story]({url})
-"
-        f"_Source: {source}_"
+        "\U0001f4f0 *" + escape(title) + "*\n\n"
+        + "[Read full story](" + url + ")\n"
+        + "_Source: " + source + "_"
     )
     _send(text)
 
@@ -35,6 +32,5 @@ def _send(text: str):
 
 
 def escape(text: str) -> str:
-    """Escape special chars for MarkdownV2."""
     special = r"\_*[]()~`>#+-=|{}.!"
     return "".join(f"\{c}" if c in special else c for c in text)
