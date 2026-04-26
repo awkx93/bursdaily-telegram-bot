@@ -1,7 +1,7 @@
 import os
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "@bursdaily")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "@sipekhuatchannel")
 CHECK_INTERVAL = 600  # seconds between checks (10 min)
 
 SOURCES = [
