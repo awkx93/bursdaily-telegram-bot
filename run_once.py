@@ -10,9 +10,14 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
+MAX_PER_RUN = 10  # cap posts per run to prevent burst when GH Actions delays stack up
 
-def process(articles: list[dict]):
+
+def process(articles: list[dict], budget: int) -> int:
+    sent = 0
     for article in articles:
+        if sent >= budget:
+            break
         url = article["url"]
         if is_seen(url):
             continue
@@ -24,10 +29,13 @@ def process(articles: list[dict]):
             source=article["source"],
         )
         time.sleep(2)
+        sent += 1
+    return sent
 
 
 init_db()
 logging.info("Checking sources...")
-process(scrape_edge_malaysia())
-process(scrape_klse_screener())
+budget = MAX_PER_RUN
+budget -= process(scrape_edge_malaysia(), budget)
+process(scrape_klse_screener(), budget)
 logging.info("Done.")

@@ -5,6 +5,10 @@ on:
     - cron: '*/10 * * * *'  # every 10 minutes
   workflow_dispatch:           # allow manual trigger
 
+concurrency:
+  group: news-bot
+  cancel-in-progress: false   # serialise runs; never run two at once
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -34,4 +38,5 @@ jobs:
           git config user.name "News Bot"
           git add seen_articles.db
           git diff --staged --quiet || git commit -m "chore: update seen articles"
+          git pull --rebase origin main
           git push
