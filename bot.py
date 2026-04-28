@@ -6,7 +6,7 @@ API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
 
 def send_article(title: str, summary: str | None, url: str, source: str):
-    text = escape(title) + "\n\n" + "[Read full story](" + url + ")"
+    text = "*" + escape(title) + "*" + "\n\n" + "[Read full story](" + url + ")"
     _send(text)
 
 

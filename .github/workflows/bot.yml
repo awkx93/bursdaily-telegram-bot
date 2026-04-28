@@ -2,16 +2,17 @@ name: News Bot
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # every 10 minutes
-  workflow_dispatch:           # allow manual trigger
+    - cron: '2 * * * *'   # fire once per hour; inner loop handles 5-min checks
+  workflow_dispatch:        # allow manual trigger
 
 concurrency:
   group: news-bot
-  cancel-in-progress: false   # serialise runs; never run two at once
+  cancel-in-progress: false  # serialise runs; never run two at once
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 65
     permissions:
       contents: write
 
@@ -27,16 +28,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run bot
+      - name: Run bot (10 checks × 5 min = 50 min coverage)
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        run: python run_once.py
-
-      - name: Save seen articles DB
         run: |
           git config user.email "actions@github.com"
           git config user.name "News Bot"
-          git add seen_articles.db
-          git diff --staged --quiet || git commit -m "chore: update seen articles"
-          git pull --rebase origin main
-          git push
+          for i in $(seq 1 10); do
+            echo "--- Check $i/10 ---"
+            python run_once.py
+            git add seen_articles.db
+            if ! git diff --staged --quiet; then
+              git commit -m "chore: update seen articles"
+              git pull --rebase origin main
+              git push
+            fi
+            [ $i -lt 10 ] && sleep 300
+          done

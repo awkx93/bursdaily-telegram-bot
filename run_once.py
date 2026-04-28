@@ -10,7 +10,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-MAX_PER_RUN = 10  # cap posts per run to prevent burst when GH Actions delays stack up
+MAX_PER_RUN = 5  # cap posts per check to prevent burst
 
 
 def process(articles: list[dict], budget: int) -> int:
