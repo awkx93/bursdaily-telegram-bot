@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 import ta
 import numpy as np
@@ -101,6 +102,7 @@ def compute(df: pd.DataFrame) -> dict | None:
             "daily_traded_value": close_val * int(volume.iloc[-1]),
         }
     except Exception as e:
+        logging.warning(f"Indicator compute failed: {e}")
         return None
 
 

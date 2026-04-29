@@ -99,21 +99,24 @@ def get_active_stocks(max_stocks: int = 150) -> list[dict]:
 def get_ohlcv(ticker: str, period_days: int = 70) -> pd.DataFrame | None:
     """Download OHLCV history for a single ticker via yfinance."""
     try:
-        end = datetime.today()
-        start = end - timedelta(days=period_days)
         df = yf.download(
             ticker,
-            start=start.strftime("%Y-%m-%d"),
-            end=end.strftime("%Y-%m-%d"),
+            period="3mo",
+            interval="1d",
             progress=False,
             auto_adjust=True,
         )
-        if df.empty or len(df) < 20:
+        if df is None or df.empty:
+            logging.warning(f"Empty OHLCV for {ticker}")
             return None
         # Flatten MultiIndex columns if present
         if isinstance(df.columns, pd.MultiIndex):
             df.columns = [c[0] for c in df.columns]
         df.columns = [str(c).strip().title() for c in df.columns]
+        df = df.dropna(how="all")
+        if len(df) < 20:
+            logging.warning(f"Insufficient OHLCV rows ({len(df)}) for {ticker}")
+            return None
         return df
     except Exception as e:
         logging.warning(f"yfinance OHLCV failed for {ticker}: {e}")
