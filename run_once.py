@@ -1,8 +1,7 @@
-import time
 import logging
 from db import init_db, is_seen, mark_seen
 from scrapers import scrape_edge_malaysia, scrape_klse_screener
-from bot import send_article
+from bot import send_batch
 
 logging.basicConfig(
     level=logging.INFO,
@@ -10,32 +9,34 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-MAX_PER_RUN = 5  # cap posts per check to prevent burst
+MAX_PER_RUN = 10  # max new articles to post per check
 
 
-def process(articles: list[dict], budget: int) -> int:
-    sent = 0
+def collect_new(articles: list[dict], budget: int) -> tuple[list[dict], int]:
+    new = []
     for article in articles:
-        if sent >= budget:
+        if len(new) >= budget:
             break
         url = article["url"]
         if is_seen(url):
             continue
         mark_seen(url)
-        send_article(
-            title=article["title"],
-            summary=article.get("summary"),
-            url=url,
-            source=article["source"],
-        )
-        time.sleep(2)
-        sent += 1
-    return sent
+        new.append(article)
+    return new, budget - len(new)
 
 
 init_db()
 logging.info("Checking sources...")
+
 budget = MAX_PER_RUN
-budget -= process(scrape_edge_malaysia(), budget)
-process(scrape_klse_screener(), budget)
+edge_new, budget = collect_new(scrape_edge_malaysia(), budget)
+klse_new, _ = collect_new(scrape_klse_screener(), budget)
+
+all_new = edge_new + klse_new
+if all_new:
+    logging.info(f"Sending {len(all_new)} new article(s) as one message")
+    send_batch(all_new)
+else:
+    logging.info("No new articles")
+
 logging.info("Done.")

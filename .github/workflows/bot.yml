@@ -28,14 +28,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run bot (10 checks × 5 min = 50 min coverage)
+      - name: Run bot (5 checks × 10 min = 50 min coverage)
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         run: |
           git config user.email "actions@github.com"
           git config user.name "News Bot"
-          for i in $(seq 1 10); do
-            echo "--- Check $i/10 ---"
+          for i in $(seq 1 5); do
+            echo "--- Check $i/5 ---"
             python run_once.py
             git add seen_articles.db
             if ! git diff --staged --quiet; then
@@ -43,5 +43,5 @@ jobs:
               git pull --rebase origin main
               git push
             fi
-            [ $i -lt 10 ] && sleep 300
+            [ $i -lt 5 ] && sleep 600
           done

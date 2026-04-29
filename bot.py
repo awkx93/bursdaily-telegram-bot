@@ -4,10 +4,40 @@ from config import TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
 
 API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
+MAX_MESSAGE_LEN = 4000  # Telegram hard limit is 4096; leave headroom
 
-def send_article(title: str, summary: str | None, url: str, source: str):
-    text = "*" + escape(title) + "*" + "\n\n" + "[Read full story](" + url + ")"
-    _send(text)
+
+def send_batch(articles: list[dict]):
+    if not articles:
+        return
+    chunks = _build_chunks(articles)
+    for chunk in chunks:
+        _send(chunk)
+
+
+def _build_chunks(articles: list[dict]) -> list[str]:
+    """Split articles into messages that fit within Telegram's character limit."""
+    chunks = []
+    current = []
+    current_len = 0
+
+    for a in articles:
+        line1 = "*" + escape(a["title"]) + "*"
+        line2 = "[Read full story](" + a["url"] + ")"
+        block = line1 + "\n" + line2
+        block_len = len(block) + 2  # +2 for the separating blank line
+
+        if current and current_len + block_len > MAX_MESSAGE_LEN:
+            chunks.append("\n\n".join(current))
+            current = []
+            current_len = 0
+
+        current.append(block)
+        current_len += block_len
+
+    if current:
+        chunks.append("\n\n".join(current))
+    return chunks
 
 
 def _send(text: str):
@@ -24,7 +54,7 @@ def _send(text: str):
     if not resp.ok:
         logging.error(f"Telegram send failed: {resp.status_code} {resp.text}")
     else:
-        logging.info("Message sent to Telegram")
+        logging.info(f"Sent batch of articles to Telegram")
 
 
 def escape(text: str) -> str:
