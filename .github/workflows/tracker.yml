@@ -52,7 +52,7 @@ jobs:
 
       - name: Run tracker
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_SIGNAL_TOKEN: ${{ secrets.TELEGRAM_SIGNAL_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_TRACK_RECORD_THREAD_ID: ${{ secrets.TELEGRAM_TRACK_RECORD_THREAD_ID }}
         run: python tracker_main.py --mode ${{ steps.mode.outputs.name }}

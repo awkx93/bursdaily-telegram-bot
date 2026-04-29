@@ -25,7 +25,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_SIGNAL_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 TRACK_RECORD_THREAD_ID = os.environ.get("TELEGRAM_TRACK_RECORD_THREAD_ID", "")
 API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"

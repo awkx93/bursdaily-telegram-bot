@@ -50,7 +50,7 @@ jobs:
 
       - name: Run screener
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_SIGNAL_TOKEN: ${{ secrets.TELEGRAM_SIGNAL_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_THREAD_ID: ${{ secrets.TELEGRAM_THREAD_ID }}
         run: python screener_main.py --session ${{ steps.session.outputs.name }}
