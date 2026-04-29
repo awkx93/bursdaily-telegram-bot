@@ -9,6 +9,9 @@ concurrency:
   group: news-bot
   cancel-in-progress: false  # serialise runs; never run two at once
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run:
     runs-on: ubuntu-latest
