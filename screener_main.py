@@ -10,6 +10,7 @@ import argparse
 import logging
 import sys
 
+from screener.tracker import init_db, record_signal
 from screener.fetcher import (
     get_active_stocks,
     get_ohlcv,
@@ -91,7 +92,12 @@ def run(session: str):
 
     logging.info(f"Top {len(top_stocks)} signals found")
 
-    # Step 7: Send to Telegram
+    # Step 7: Initialise tracker DB and record signals
+    init_db()
+    for stock in top_stocks:
+        record_signal(stock, session)
+
+    # Step 8: Send to Telegram
     send_signals(top_stocks, session, klci_change)
     logging.info("=== Screener complete ===")
 

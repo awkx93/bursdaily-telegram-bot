@@ -1,24 +1,24 @@
-name: T+2 Stock Screener
+name: T+2 Track Record
 
 on:
   schedule:
-    - cron: '30 0 * * 1-5'   # 8:30am MYT (UTC+8) = 00:30 UTC, Mon–Fri
-    - cron: '0 6 * * 1-5'    # 2:00pm MYT (UTC+8) = 06:00 UTC, Mon–Fri
+    - cron: '30 9 * * 1-5'   # 5:30pm MYT = 09:30 UTC daily Mon–Fri (close T+2)
+    - cron: '0 0 * * 1'      # 8:00am MYT = 00:00 UTC every Monday (weekly summary)
   workflow_dispatch:
     inputs:
-      session:
-        description: 'Session to run'
+      mode:
+        description: 'Mode to run'
         required: true
-        default: 'morning'
+        default: 'close'
         type: choice
         options:
-          - morning
-          - afternoon
+          - close
+          - weekly
 
 jobs:
-  screen:
+  track:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     permissions:
       contents: write
 
@@ -34,31 +34,33 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Determine session
-        id: session
+      - name: Determine mode
+        id: mode
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "name=${{ github.event.inputs.session }}" >> $GITHUB_OUTPUT
+            echo "name=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
           else
             HOUR=$(date -u +"%H")
-            if [ "$HOUR" = "00" ]; then
-              echo "name=morning" >> $GITHUB_OUTPUT
+            MIN=$(date -u +"%M")
+            DAY=$(date -u +"%u")
+            if [ "$HOUR" = "00" ] && [ "$DAY" = "1" ]; then
+              echo "name=weekly" >> $GITHUB_OUTPUT
             else
-              echo "name=afternoon" >> $GITHUB_OUTPUT
+              echo "name=close" >> $GITHUB_OUTPUT
             fi
           fi
 
-      - name: Run screener
+      - name: Run tracker
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_THREAD_ID: ${{ secrets.TELEGRAM_THREAD_ID }}
-        run: python screener_main.py --session ${{ steps.session.outputs.name }}
+          TELEGRAM_TRACK_RECORD_THREAD_ID: ${{ secrets.TELEGRAM_TRACK_RECORD_THREAD_ID }}
+        run: python tracker_main.py --mode ${{ steps.mode.outputs.name }}
 
       - name: Commit tracker DB
         run: |
           git config user.email "actions@github.com"
-          git config user.name "Screener Bot"
+          git config user.name "Track Record Bot"
           git add tracker.db
           if ! git diff --staged --quiet; then
             git commit -m "chore: update tracker.db"
