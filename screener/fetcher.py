@@ -37,7 +37,7 @@ def _load_stock_universe() -> list[dict]:
     return unique
 
 
-def get_active_stocks(max_stocks: int = 150) -> list[dict]:
+def get_active_stocks(max_stocks: int = 2000) -> list[dict]:
     """
     Load Bursa stock universe then fetch latest price + volume via yfinance.
     Returns stocks pre-filtered by price and volume floors.

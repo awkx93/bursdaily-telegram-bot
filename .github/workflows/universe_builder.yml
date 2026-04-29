@@ -1,0 +1,41 @@
+name: Refresh Stock Universe
+
+on:
+  schedule:
+    - cron: '0 17 * * 0'   # Sunday 1:00am MYT (UTC+8) = Sunday 17:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build stock universe
+        run: python -m screener.build_universe
+
+      - name: Commit updated universe
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Universe Builder Bot"
+          git add screener/bursa_stocks.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: refresh bursa_stocks.json"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes to bursa_stocks.json"
+          fi

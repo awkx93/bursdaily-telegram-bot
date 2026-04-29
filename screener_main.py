@@ -46,8 +46,8 @@ def run(session: str):
         _send_no_signal(session)
         return
 
-    # Step 2: Fetch active stocks universe (top 150 by volume)
-    stocks = get_active_stocks(max_stocks=150)
+    # Step 2: Fetch active stocks universe (full Bursa universe)
+    stocks = get_active_stocks()
     if not stocks:
         logging.error("No stocks fetched — sending no-signal message")
         from screener.signals import _send_no_signal
