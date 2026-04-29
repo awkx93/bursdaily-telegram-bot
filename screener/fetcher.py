@@ -43,8 +43,8 @@ def get_active_stocks(max_stocks: int = 150) -> list[dict]:
     Returns stocks pre-filtered by price and volume floors.
     """
     universe = _load_stock_universe()
-    tickers = [f"{s['code']}.KL" for s in universe]
-    code_map = {f"{s['code']}.KL": s for s in universe}
+    tickers = [s["ticker"] for s in universe]
+    code_map = {s["ticker"]: s for s in universe}
 
     logging.info(f"Downloading latest data for {len(tickers)} tickers...")
 
