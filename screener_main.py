@@ -49,7 +49,9 @@ def run(session: str):
     # Step 2: Fetch active stocks universe (top 150 by volume)
     stocks = get_active_stocks(max_stocks=150)
     if not stocks:
-        logging.error("No stocks fetched — aborting")
+        logging.error("No stocks fetched — sending no-signal message")
+        from screener.signals import _send_no_signal
+        _send_no_signal(session)
         return
 
     # Step 3: Fetch supporting data
