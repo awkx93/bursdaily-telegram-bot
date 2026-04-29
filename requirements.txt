@@ -1,3 +1,7 @@
 requests
 beautifulsoup4
 lxml
+yfinance
+pandas
+pandas-ta
+numpy

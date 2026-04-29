@@ -1,0 +1,54 @@
+name: T+2 Stock Screener
+
+on:
+  schedule:
+    - cron: '30 0 * * 1-5'   # 8:30am MYT (UTC+8) = 00:30 UTC, Mon–Fri
+    - cron: '0 6 * * 1-5'    # 2:00pm MYT (UTC+8) = 06:00 UTC, Mon–Fri
+  workflow_dispatch:
+    inputs:
+      session:
+        description: 'Session to run'
+        required: true
+        default: 'morning'
+        type: choice
+        options:
+          - morning
+          - afternoon
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Determine session
+        id: session
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "name=${{ github.event.inputs.session }}" >> $GITHUB_OUTPUT
+          else
+            HOUR=$(date -u +"%H")
+            if [ "$HOUR" = "00" ]; then
+              echo "name=morning" >> $GITHUB_OUTPUT
+            else
+              echo "name=afternoon" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Run screener
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_THREAD_ID: ${{ secrets.TELEGRAM_THREAD_ID }}
+        run: python screener_main.py --session ${{ steps.session.outputs.name }}

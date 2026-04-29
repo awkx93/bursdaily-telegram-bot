@@ -1,0 +1,52 @@
+{
+  "active_themes": [
+    {
+      "name": "Data Center Boom",
+      "keywords": ["data center", "hyperscaler", "AI infrastructure", "cloud", "microsoft", "nvidia", "data centre"],
+      "sectors": ["Technology", "Utilities", "Telecom"],
+      "stocks": ["YTLPOWR", "TM", "TIME", "DIGI", "MAXIS"]
+    },
+    {
+      "name": "Oil & Gas Upcycle",
+      "keywords": ["oil price", "brent crude", "upstream", "fpso", "petronas", "oil and gas", "lng"],
+      "sectors": ["Oil & Gas"],
+      "stocks": ["HIBISCS", "DIALOG", "DAYANG", "SAPURA", "VELESTO", "PENERGY", "MISC"]
+    },
+    {
+      "name": "Semiconductor Upcycle",
+      "keywords": ["semiconductor", "chip", "wafer", "rf chip", "broadcom", "ai chip", "electronics"],
+      "sectors": ["Technology"],
+      "stocks": ["UNISEM", "MPI", "VITROX", "AEMULUS", "GENETEC"]
+    },
+    {
+      "name": "Construction & Infrastructure",
+      "keywords": ["contract", "infrastructure", "highway", "mrt", "lrt", "hospital", "government project", "job win"],
+      "sectors": ["Construction"],
+      "stocks": ["GAMUDA", "IJM", "SUNCON", "MUDAJYA", "HSS", "PRTASCO", "ECONPILE"]
+    },
+    {
+      "name": "Glove Sector Recovery",
+      "keywords": ["glove", "latex", "nitrile", "medical glove", "rubber glove"],
+      "sectors": ["Healthcare"],
+      "stocks": ["TOPGLOV", "HARTA", "KOSSAN", "SUPERMX"]
+    },
+    {
+      "name": "Ringgit Weakness / Exporters",
+      "keywords": ["ringgit", "myr weakens", "usd strengthens", "currency", "forex", "export"],
+      "sectors": ["Technology", "Healthcare"],
+      "stocks": ["UNISEM", "MPI", "TOPGLOV", "HARTA", "KOSSAN"]
+    },
+    {
+      "name": "Plantation / CPO Rally",
+      "keywords": ["crude palm oil", "cpo", "palm oil", "plantation", "edible oil"],
+      "sectors": ["Plantation"],
+      "stocks": ["IOICORP", "KLK", "SIMEPLT", "GENP", "TSH", "TAANN"]
+    },
+    {
+      "name": "Banking Sector",
+      "keywords": ["interest rate", "loan growth", "npl", "bank", "banking", "bnm", "overnight policy rate"],
+      "sectors": ["Finance"],
+      "stocks": ["CIMB", "MAYBANK", "PBBANK", "HLBANK", "RHBBANK", "ABMB"]
+    }
+  ]
+}
