@@ -1676,99 +1676,44 @@
       "name": "0399"
     },
     {
-      "code": "5012",
-      "ticker": "5012.KL",
-      "name": "5012"
+      "code": "0450",
+      "ticker": "0450.KL",
+      "name": "0450"
     },
     {
-      "code": "5025",
-      "ticker": "5025.KL",
-      "name": "5025"
+      "code": "0451",
+      "ticker": "0451.KL",
+      "name": "0451"
     },
     {
-      "code": "5040",
-      "ticker": "5040.KL",
-      "name": "5040"
+      "code": "2755",
+      "ticker": "2755.KL",
+      "name": "2755"
     },
     {
-      "code": "5071",
-      "ticker": "5071.KL",
-      "name": "5071"
+      "code": "3867",
+      "ticker": "3867.KL",
+      "name": "3867"
     },
     {
-      "code": "5085",
-      "ticker": "5085.KL",
-      "name": "5085"
+      "code": "5436",
+      "ticker": "5436.KL",
+      "name": "5436"
     },
     {
-      "code": "5095",
-      "ticker": "5095.KL",
-      "name": "5095"
+      "code": "6637",
+      "ticker": "6637.KL",
+      "name": "6637"
     },
     {
-      "code": "5108",
-      "ticker": "5108.KL",
-      "name": "5108"
+      "code": "7028",
+      "ticker": "7028.KL",
+      "name": "7028"
     },
     {
-      "code": "5145",
-      "ticker": "5145.KL",
-      "name": "5145"
-    },
-    {
-      "code": "5148",
-      "ticker": "5148.KL",
-      "name": "5148"
-    },
-    {
-      "code": "5156",
-      "ticker": "5156.KL",
-      "name": "5156"
-    },
-    {
-      "code": "5157",
-      "ticker": "5157.KL",
-      "name": "5157"
-    },
-    {
-      "code": "5180",
-      "ticker": "5180.KL",
-      "name": "5180"
-    },
-    {
-      "code": "5286",
-      "ticker": "5286.KL",
-      "name": "5286"
-    },
-    {
-      "code": "7007",
-      "ticker": "7007.KL",
-      "name": "7007"
-    },
-    {
-      "code": "7083",
-      "ticker": "7083.KL",
-      "name": "7083"
-    },
-    {
-      "code": "7087",
-      "ticker": "7087.KL",
-      "name": "7087"
-    },
-    {
-      "code": "7103",
-      "ticker": "7103.KL",
-      "name": "7103"
-    },
-    {
-      "code": "7374",
-      "ticker": "7374.KL",
-      "name": "7374"
-    },
-    {
-      "code": "9199",
-      "ticker": "9199.KL",
-      "name": "9199"
+      "code": "7165",
+      "ticker": "7165.KL",
+      "name": "7165"
     }
   ]
 }
