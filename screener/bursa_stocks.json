@@ -1751,69 +1751,149 @@
       "name": "0466"
     },
     {
-      "code": "3069",
-      "ticker": "3069.KL",
-      "name": "3069"
+      "code": "0467",
+      "ticker": "0467.KL",
+      "name": "0467"
     },
     {
-      "code": "5220",
-      "ticker": "5220.KL",
-      "name": "5220"
+      "code": "1015",
+      "ticker": "1015.KL",
+      "name": "1015"
     },
     {
-      "code": "5313",
-      "ticker": "5313.KL",
-      "name": "5313"
+      "code": "1023",
+      "ticker": "1023.KL",
+      "name": "1023"
     },
     {
-      "code": "5321",
-      "ticker": "5321.KL",
-      "name": "5321"
+      "code": "1058",
+      "ticker": "1058.KL",
+      "name": "1058"
     },
     {
-      "code": "5331",
-      "ticker": "5331.KL",
-      "name": "5331"
+      "code": "1066",
+      "ticker": "1066.KL",
+      "name": "1066"
     },
     {
-      "code": "5649",
-      "ticker": "5649.KL",
-      "name": "5649"
+      "code": "1082",
+      "ticker": "1082.KL",
+      "name": "1082"
     },
     {
-      "code": "7016",
-      "ticker": "7016.KL",
-      "name": "7016"
+      "code": "1147",
+      "ticker": "1147.KL",
+      "name": "1147"
     },
     {
-      "code": "7047",
-      "ticker": "7047.KL",
-      "name": "7047"
+      "code": "1155",
+      "ticker": "1155.KL",
+      "name": "1155"
     },
     {
-      "code": "7070",
-      "ticker": "7070.KL",
-      "name": "7070"
+      "code": "1163",
+      "ticker": "1163.KL",
+      "name": "1163"
     },
     {
-      "code": "7085",
-      "ticker": "7085.KL",
-      "name": "7085"
+      "code": "1171",
+      "ticker": "1171.KL",
+      "name": "1171"
     },
     {
-      "code": "7131",
-      "ticker": "7131.KL",
-      "name": "7131"
+      "code": "1198",
+      "ticker": "1198.KL",
+      "name": "1198"
     },
     {
-      "code": "7139",
-      "ticker": "7139.KL",
-      "name": "7139"
+      "code": "1287",
+      "ticker": "1287.KL",
+      "name": "1287"
     },
     {
-      "code": "7178",
-      "ticker": "7178.KL",
-      "name": "7178"
+      "code": "1295",
+      "ticker": "1295.KL",
+      "name": "1295"
+    },
+    {
+      "code": "1503",
+      "ticker": "1503.KL",
+      "name": "1503"
+    },
+    {
+      "code": "1562",
+      "ticker": "1562.KL",
+      "name": "1562"
+    },
+    {
+      "code": "1996",
+      "ticker": "1996.KL",
+      "name": "1996"
+    },
+    {
+      "code": "2054",
+      "ticker": "2054.KL",
+      "name": "2054"
+    },
+    {
+      "code": "2089",
+      "ticker": "2089.KL",
+      "name": "2089"
+    },
+    {
+      "code": "2135",
+      "ticker": "2135.KL",
+      "name": "2135"
+    },
+    {
+      "code": "2143",
+      "ticker": "2143.KL",
+      "name": "2143"
+    },
+    {
+      "code": "2224",
+      "ticker": "2224.KL",
+      "name": "2224"
+    },
+    {
+      "code": "2259",
+      "ticker": "2259.KL",
+      "name": "2259"
+    },
+    {
+      "code": "2283",
+      "ticker": "2283.KL",
+      "name": "2283"
+    },
+    {
+      "code": "2291",
+      "ticker": "2291.KL",
+      "name": "2291"
+    },
+    {
+      "code": "2305",
+      "ticker": "2305.KL",
+      "name": "2305"
+    },
+    {
+      "code": "2429",
+      "ticker": "2429.KL",
+      "name": "2429"
+    },
+    {
+      "code": "3336",
+      "ticker": "3336.KL",
+      "name": "3336"
+    },
+    {
+      "code": "5036",
+      "ticker": "5036.KL",
+      "name": "5036"
+    },
+    {
+      "code": "7073",
+      "ticker": "7073.KL",
+      "name": "7073"
     }
   ]
 }
