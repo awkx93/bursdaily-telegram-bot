@@ -1766,39 +1766,29 @@
       "name": "0469"
     },
     {
-      "code": "1643",
-      "ticker": "1643.KL",
-      "name": "1643"
+      "code": "0470",
+      "ticker": "0470.KL",
+      "name": "0470"
     },
     {
-      "code": "3336",
-      "ticker": "3336.KL",
-      "name": "3336"
+      "code": "0471",
+      "ticker": "0471.KL",
+      "name": "0471"
     },
     {
-      "code": "4383",
-      "ticker": "4383.KL",
-      "name": "4383"
+      "code": "2062",
+      "ticker": "2062.KL",
+      "name": "2062"
     },
     {
-      "code": "5056",
-      "ticker": "5056.KL",
-      "name": "5056"
+      "code": "5401",
+      "ticker": "5401.KL",
+      "name": "5401"
     },
     {
-      "code": "5098",
-      "ticker": "5098.KL",
-      "name": "5098"
-    },
-    {
-      "code": "5159",
-      "ticker": "5159.KL",
-      "name": "5159"
-    },
-    {
-      "code": "5341",
-      "ticker": "5341.KL",
-      "name": "5341"
+      "code": "7070",
+      "ticker": "7070.KL",
+      "name": "7070"
     }
   ]
 }
