@@ -1806,39 +1806,94 @@
       "name": "0479"
     },
     {
-      "code": "5042",
-      "ticker": "5042.KL",
-      "name": "5042"
+      "code": "5005",
+      "ticker": "5005.KL",
+      "name": "5005"
     },
     {
-      "code": "5101",
-      "ticker": "5101.KL",
-      "name": "5101"
+      "code": "5008",
+      "ticker": "5008.KL",
+      "name": "5008"
     },
     {
-      "code": "5789",
-      "ticker": "5789.KL",
-      "name": "5789"
+      "code": "5041",
+      "ticker": "5041.KL",
+      "name": "5041"
     },
     {
-      "code": "6459",
-      "ticker": "6459.KL",
-      "name": "6459"
+      "code": "5069",
+      "ticker": "5069.KL",
+      "name": "5069"
     },
     {
-      "code": "7140",
-      "ticker": "7140.KL",
-      "name": "7140"
+      "code": "5078",
+      "ticker": "5078.KL",
+      "name": "5078"
     },
     {
-      "code": "7207",
-      "ticker": "7207.KL",
-      "name": "7207"
+      "code": "5080",
+      "ticker": "5080.KL",
+      "name": "5080"
     },
     {
-      "code": "7219",
-      "ticker": "7219.KL",
-      "name": "7219"
+      "code": "5098",
+      "ticker": "5098.KL",
+      "name": "5098"
+    },
+    {
+      "code": "5113",
+      "ticker": "5113.KL",
+      "name": "5113"
+    },
+    {
+      "code": "5126",
+      "ticker": "5126.KL",
+      "name": "5126"
+    },
+    {
+      "code": "5162",
+      "ticker": "5162.KL",
+      "name": "5162"
+    },
+    {
+      "code": "5165",
+      "ticker": "5165.KL",
+      "name": "5165"
+    },
+    {
+      "code": "5180",
+      "ticker": "5180.KL",
+      "name": "5180"
+    },
+    {
+      "code": "5204",
+      "ticker": "5204.KL",
+      "name": "5204"
+    },
+    {
+      "code": "5242",
+      "ticker": "5242.KL",
+      "name": "5242"
+    },
+    {
+      "code": "5308",
+      "ticker": "5308.KL",
+      "name": "5308"
+    },
+    {
+      "code": "6904",
+      "ticker": "6904.KL",
+      "name": "6904"
+    },
+    {
+      "code": "7204",
+      "ticker": "7204.KL",
+      "name": "7204"
+    },
+    {
+      "code": "9539",
+      "ticker": "9539.KL",
+      "name": "9539"
     }
   ]
 }
